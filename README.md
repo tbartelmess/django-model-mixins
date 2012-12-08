@@ -5,8 +5,7 @@ Simple helper to extend django models using mixins
 
 When you mixin a django model into another one, it is probably behaving not how you want it to. This is caused by django's metaclass magic.
 
-This package provides a single class ```ModelMixin``` that you can use as the base for mixins, that provide additional fields to the object.
-
+This package provides a single class ```ModelMixin``` that you can use as the base for mixins, that provide additional fields to the object the class get's mixed in to.
 
 ```ModelMixin``` is a direct subclass of ```object``` and therefore it's subclass is not going to be an own table.
 
