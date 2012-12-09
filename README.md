@@ -18,6 +18,7 @@ This package provides a single class ```ModelMixin``` that you can use as the ba
 ### Model
 
 ```python
+from django.db import models
 from modelmixins import ModelMixin
 
 class Car(models.Model):
