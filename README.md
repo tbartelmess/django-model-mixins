@@ -9,6 +9,9 @@ This package provides a single class ```ModelMixin``` that you can use as the ba
 
 ```ModelMixin``` is a direct subclass of ```object``` and therefore it's subclass is not going to be an own table.
 
+## Limitations
+
+ * No meta options on mixin model
 
 ## Example
 
