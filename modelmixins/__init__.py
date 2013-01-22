@@ -13,28 +13,24 @@ class ModelMixin(object):
     """
 
     @classmethod
-    def model_mixin(cls):
+    def model_mixin(cls, target):
         """
-        Adds the fields of the class to the all classes that mix it in
+        Adds the fields of the class to the target passed in.
         """
+        assert issubclass(target, models.Model)
+        
         fields = {}
 
         for (name, attr) in cls.__dict__.items():
             if isinstance(attr, models.Field):
                 fields[name] = attr
 
-        for fieldname in fields.keys():
-            delattr(cls, fieldname)
-
-        for subclass in cls.__subclasses__():
-            assert issubclass(subclass, models.Model)
-            for (fieldname, field) in fields.items():
-                field.contribute_to_class(subclass, fieldname)
-
+        for (key, field) in fields.items():
+            field.contribute_to_class(target, key)
 
 
 @receiver(class_prepared)
 def mixin(sender, **kwargs):
     for base in sender.__bases__:
         if issubclass(base, ModelMixin):
-            base.model_mixin()
+            base.model_mixin(sender)
