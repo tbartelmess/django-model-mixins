@@ -21,11 +21,11 @@ class ModelMixin(object):
         
         fields = {}
 
-        for (name, attr) in cls.__dict__.items():
+        for (name, attr) in list(cls.__dict__.items()):
             if isinstance(attr, models.Field):
                 fields[name] = attr
 
-        for (key, field) in fields.items():
+        for (key, field) in list(fields.items()):
             field.contribute_to_class(target, key)
 
 
