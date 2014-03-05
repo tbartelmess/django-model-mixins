@@ -7,7 +7,7 @@ Setup script
 from distutils.core import setup
 
 setup(name='django-model-mixins',
-      version='1.0.3',
+      version='1.0.4',
       description='Simple helper to extend django models using mixins',
       author='Thomas Bartelmess',
       author_email='thomas.bartelmess@me.com',
