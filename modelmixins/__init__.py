@@ -4,7 +4,6 @@ Mixin support for django models
 from django.db import models
 from django.db.models.signals import class_prepared
 from django.dispatch import receiver
-from django.db.models.fields import Field
 
 
 class ModelMixin(object):
@@ -18,7 +17,7 @@ class ModelMixin(object):
         Adds the fields of the class to the target passed in.
         """
         assert issubclass(target, models.Model)
-        
+
         fields = {}
 
         for (name, attr) in list(cls.__dict__.items()):
