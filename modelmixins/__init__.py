@@ -1,6 +1,8 @@
 """
 Mixin support for django models
 """
+import copy
+
 from django.db import models
 from django.db.models.signals import class_prepared
 from django.dispatch import receiver
@@ -25,7 +27,7 @@ class ModelMixin(object):
                 fields[name] = attr
 
         for (key, field) in list(fields.items()):
-            field.contribute_to_class(target, key)
+            copy.deepcopy(field).contribute_to_class(target, key)
 
 
 @receiver(class_prepared)
