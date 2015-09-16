@@ -23,7 +23,7 @@ class ModelMixin(object):
         fields = {}
 
         for (name, attr) in list(cls.__dict__.items()):
-            if isinstance(attr, models.Field):
+            if isinstance(attr, (models.Field, models.Manager)):
                 fields[name] = attr
 
         for (key, field) in list(fields.items()):
